@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import django_heroku
+import boto3
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,18 +25,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '+2b2vt^l=_wuh&^@!+#_mf%g5y3ojtm4h&2-bm2mg#oi3t3mwx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 
-# ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['demblog.herokuapp.com','127.0.0.1:8100']
 
-DEBUG = False
-
-# DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
-
-ALLOWED_HOSTS = ['*']
-
-# ALLOWED_HOSTS = ['https://ibkblog.herokuapp.com/']
-
+ALLOWED_HOSTS = ['127.0.0.1','demblog.heroku.com']
 
 # Application definition
 
@@ -52,6 +46,7 @@ INSTALLED_APPS = [
     # 'users',
     'crispy_forms',
     'storages',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -147,7 +142,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
 
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 EMAIL_HOST = 'smtp.gmail.com'
@@ -162,17 +156,16 @@ EMAIL_HOST_PASSWORD = os.environ.get('DB_PASS')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-AWS_ACCESS_KEY = os.environ.get('AWS_ACCESS_KEY_ID')
+# AWS_ACCESS_KEY = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_ACCESS_KEY_ID = 'AKIAWZBUTVX5XLBHB6PC'
 
-AWS_SECRET_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_SECRET_ACCESS_KEY = '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'
 
-S3_BUCKET = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+AWS_STORAGE_BUCKET_NAME = 'django-bucket-ibk'
 
 AWS_S3_FILE_OVERWRITE = False
 
 AWS_DEFAULT_ACL = None
-
-# import boto3
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
