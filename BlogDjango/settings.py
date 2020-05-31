@@ -22,7 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+2b2vt^l=_wuh&^@!+#_mf%g5y3ojtm4h&2-bm2mg#oi3t3mwx'
+# SECRET_KEY = '+2b2vt^l=_wuh&^@!+#_mf%g5y3ojtm4h&2-bm2mg#oi3t3mwx'
+
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '+2b2vt^l=_wuh&^@!+#_mf%g5y3ojtm4h&2-bm2mg#oi3t3mwx')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 ALLOWED_HOSTS = ['127.0.0.1','demblog.heroku.com']
@@ -164,11 +166,16 @@ EMAIL_HOST_PASSWORD = os.environ.get('DB_PASS')
 # AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 # AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
-AWS_ACCESS_KEY_ID = 'AKIAWZBUTVX5XLBHB6PC'
+# AWS_ACCESS_KEY_ID = 'AKIAWZBUTVX5XLBHB6PC'
 
-AWS_SECRET_ACCESS_KEY = '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'
+# AWS_SECRET_ACCESS_KEY = 'RMyKlwFlqxgeLBlgpXc0GHBkiZnkkS37mv0ZyGiD'
 
-AWS_STORAGE_BUCKET_NAME = 'django-bucket-ibk'
+# AWS_STORAGE_BUCKET_NAME = 'django-bucket-ibk'
+
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_KEY_ID', 'AKIAWZBUTVX5XLBHB6PC')
+
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_ACCESS_KEY', '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')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('SC_BUCKET','django-bucket-ibk')
 
 AWS_S3_FILE_OVERWRITE = False
 
