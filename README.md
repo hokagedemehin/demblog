@@ -1,0 +1,2 @@
+# demblog
+Django blog deployed
