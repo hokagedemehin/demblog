@@ -25,11 +25,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '+2b2vt^l=_wuh&^@!+#_mf%g5y3ojtm4h&2-bm2mg#oi3t3mwx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+ALLOWED_HOSTS = ['127.0.0.1','demblog.heroku.com']
+
 DEBUG = True
 
-# ALLOWED_HOSTS = ['demblog.herokuapp.com','127.0.0.1:8100']
+# CSRF_COOKIE_SECURE = True
 
-ALLOWED_HOSTS = ['127.0.0.1','demblog.heroku.com']
+# SESSION_COOKIE_SECURE = True
+
+# ALLOWED_HOSTS = ['demblog.herokuapp.com','127.0.0.1:8100']
 
 # Application definition
 
@@ -154,14 +158,17 @@ EMAIL_HOST_USER = os.environ.get('DB_EMAIL')
 
 EMAIL_HOST_PASSWORD = os.environ.get('DB_PASS')
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# AWS_ACCESS_KEY = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_ACCESS_KEY_ID = 'AKIAWZBUTVX5XLBHB6PC'
+AWS_ACCESS_KEY = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
-AWS_SECRET_ACCESS_KEY = 'RMyKlwFlqxgeLBlgpXc0GHBkiZnkkS37mv0ZyGiD'
+# AWS_ACCESS_KEY_ID = 'AKIAWZBUTVX5XLBHB6PC'
 
-AWS_STORAGE_BUCKET_NAME = 'django-bucket-ibk'
+# AWS_SECRET_ACCESS_KEY = 'RMyKlwFlqxgeLBlgpXc0GHBkiZnkkS37mv0ZyGiD'
+
+# AWS_STORAGE_BUCKET_NAME = 'django-bucket-ibk'
 
 AWS_S3_FILE_OVERWRITE = False
 
@@ -171,6 +178,8 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
 import dj_database_url
 db_from_env=dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
@@ -178,3 +187,7 @@ DATABASES['default'].update(db_from_env)
 django_heroku.settings(locals())
 
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
