@@ -160,6 +160,8 @@ EMAIL_HOST_USER = os.environ.get('DB_EMAIL')
 
 EMAIL_HOST_PASSWORD = os.environ.get('DB_PASS')
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 
 # AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
