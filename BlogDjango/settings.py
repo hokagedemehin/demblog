@@ -168,10 +168,10 @@ EMAIL_HOST_PASSWORD = os.environ.get('DB_PASS')
 
 AWS_ACCESS_KEY_ID = 'AKIAWZBUTVX5QK4PZM4Z'
 
-AWS_SECRET_ACCESS_KEY = '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'
+# AWS_SECRET_ACCESS_KEY = 'ZZNaQEzhev70e//8wY+HcSRuf3ay9vJ6/50w9Bhl'
 
-# with open(os.path.join(BASE_DIR, 'key.txt')) as f:
-#     AWS_SECRET_ACCESS_KEY = f.read().strip()
+with open(os.path.join(BASE_DIR, 'key.txt')) as f:
+    AWS_SECRET_ACCESS_KEY = f.read().strip()
 
 AWS_STORAGE_BUCKET_NAME = 'django-bucket-ibk'
 
